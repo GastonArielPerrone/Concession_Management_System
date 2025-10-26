@@ -1,6 +1,5 @@
 from django.db import models
 from apps.cliente.models import Cliente
-from apps.detalle_venta.models import Detalle_venta
 from apps.empleado.models import Empleado # type: ignore
 
 # Create your models here.
@@ -9,7 +8,7 @@ class Metodo_pago(models.Model):
     debito = models.BooleanField()
     credito = models.BooleanField()
     efectivo = models.BooleanField()
-    total = models.ForeignKey(Detalle_venta, null=False, on_delete=models.CASCADE)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.nombre
@@ -18,7 +17,7 @@ class Venta(models.Model):
     empleado = models.ForeignKey(Empleado, null=False, on_delete=models.CASCADE)
     fecha_venta = models.DateField(auto_now=True)
     metodo_pago = models.ForeignKey(Metodo_pago, null=False, on_delete=models.CASCADE)
-    total = models.DecimalField(max_digits=9, decimal_places=2,)
+    total = models.DecimalField(max_digits=10, decimal_places=2,)
 
     def __str__(self):
         return self.cliente
