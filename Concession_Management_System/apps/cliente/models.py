@@ -13,3 +13,6 @@ class Cliente(models.Model):
     country_privado = models.BooleanField()
     piso = models.IntegerField(null=True,blank=True)
     numero_casa = models.CharField(max_length=3, null=True, blank=True)
+
+    def __str__(self):
+        return self.nombre
