@@ -47,6 +47,7 @@ LOCAL_APPS = [
     'apps.modelo',
     'apps.vehiculo',
     'apps.venta',
+    'apps.servicio_adicional'
 ]
 
 THIRDS_APPS = []

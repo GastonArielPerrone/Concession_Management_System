@@ -3,7 +3,6 @@ from django.contrib.auth.hashers import make_password, check_password
 from apps.cliente.models import Cliente
 from apps.empleado.models import Empleado
 
-
 # --- Funciones para hashear y verificar el número de tarjeta ---
 def hash_numero_tarjeta(numero_tarjeta: str) -> str:
     """Hashea el número de tarjeta usando el algoritmo de Django."""
@@ -39,6 +38,7 @@ class Venta(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
     metodo_pago = models.ForeignKey(Metodo_pago, on_delete=models.CASCADE)
+    servicios = models.ManyToManyField('servicio_adicional.Servicio_adicional', related_name='ventas',blank=True, null=True)
     fecha_venta = models.DateField(auto_now=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)
 
