@@ -8,11 +8,15 @@ from apps.modelo.models import Modelo
 class Vehiculo(models.Model):
     marca = models.ForeignKey(Marca,on_delete=models.CASCADE)
     modelo = models.ForeignKey(Modelo,on_delete=models.CASCADE)
-    año = models.IntegerField(max_length=4)
+    año = models.IntegerField()
     color = models.CharField(max_length=10)
     numero_chasis = models.CharField(max_length=30)
     numero_motor = models.CharField(max_length=30)
     precio_lista = models.DecimalField(max_digits=10, decimal_places=2)
+    vendido = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = "Vehiculos"
 
     def __str__(self):
         return f"{self.marca} - {self.modelo}"
