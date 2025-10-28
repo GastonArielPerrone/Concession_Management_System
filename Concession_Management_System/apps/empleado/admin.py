@@ -1,6 +1,6 @@
 # apps/empleado/admin.py
 from django.contrib import admin
-from .models import Empleado
+from .models import Empleado, Cargo
 
 @admin.register(Empleado)
 class EmpleadoAdmin(admin.ModelAdmin):
@@ -8,3 +8,7 @@ class EmpleadoAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre', 'apellido', 'telefono', 'cargo', 'is_staff')
     list_filter = ('cargo', 'is_staff')
     search_fields = ('nombre', 'apellido', 'email', 'telefono')
+@admin.register(Cargo)
+class CargoAdmin(admin.ModelAdmin):
+    list_display =('id','nombre')
+    list_filter = ('id','nombre')

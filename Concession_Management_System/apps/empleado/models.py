@@ -43,7 +43,7 @@ class Empleado(AbstractBaseUser, PermissionsMixin):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     telefono = models.CharField(max_length=15, blank=True, null=True)
-    cargo = models.ForeignKey(Cargo, null=False, blank=False, on_delete=models.CASCADE)
+    cargo = models.ForeignKey(Cargo, on_delete=models.SET_NULL, null=True, blank=True)
 
     # Campos de control del sistema
     is_active = models.BooleanField(default=True)
