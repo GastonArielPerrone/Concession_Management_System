@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Bienvenido al Sistema de Gestión de Concesionarias</h1>
+    <p>Ha iniciado sesión correctamente.</p>
+    <a href="{% url 'logout' %}" class="logout-button">Cerrar Sesión</a>
+</div>
+{% endblock %}
