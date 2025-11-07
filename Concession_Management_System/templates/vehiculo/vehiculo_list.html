@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Listado de Vehículos</h1>
+
+  <form method="get">
+    <label for="marca">Marca:</label>
+    <input type="text" name="marca" id="marca" value="{{ request.GET.marca }}">
+    <label for="modelo">Modelo:</label>
+    <input type="text" name="modelo" id="modelo" value="{{ request.GET.modelo }}">
+    <button type="submit">Filtrar</button>
+  </form>
+
+  <a href="{% url 'vehiculo_create' %}">Agregar Vehículo</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Año</th>
+        <th>Color</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for vehiculo in vehiculos %}
+        <tr>
+          <td>{{ vehiculo.marca }}</td>
+          <td>{{ vehiculo.modelo }}</td>
+          <td>{{ vehiculo.año }}</td>
+          <td>{{ vehiculo.color }}</td>
+          <td>{{ vehiculo.precio_lista }}</td>
+          <td>
+            {% if vehiculo.image_vehiculo %}
+              <img src="{{ vehiculo.image_vehiculo.url }}" alt="{{ vehiculo.marca }} {{ vehiculo.modelo }}" width="100">
+            {% else %}
+              Sin imagen
+            {% endif %}
+          </td>
+          <td>
+            <a href="{% url 'vehiculo_update' vehiculo.pk %}">Editar</a>
+            <a href="{% url 'vehiculo_delete' vehiculo.pk %}">Eliminar</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

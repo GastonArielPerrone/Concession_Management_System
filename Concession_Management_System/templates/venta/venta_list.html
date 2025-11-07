@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Listado de Ventas</h1>
+
+  <form method="get">
+    <label for="cliente">Cliente:</label>
+    <input type="text" name="cliente" id="cliente" value="{{ request.GET.cliente }}">
+    <label for="empleado">Empleado:</label>
+    <input type="text" name="empleado" id="empleado" value="{{ request.GET.empleado }}">
+    <button type="submit">Filtrar</button>
+  </form>
+
+  <a href="{% url 'venta_create' %}">Agregar Venta</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Empleado</th>
+        <th>Fecha</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for venta in ventas %}
+        <tr>
+          <td>{{ venta.cliente }}</td>
+          <td>{{ venta.empleado }}</td>
+          <td>{{ venta.fecha_venta }}</td>
+          <td>{{ venta.total }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

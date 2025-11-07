@@ -14,6 +14,7 @@ class Vehiculo(models.Model):
     numero_motor = models.CharField(max_length=30)
     precio_lista = models.DecimalField(max_digits=10, decimal_places=2)
     vendido = models.BooleanField(default=False)
+    image_vehiculo = models.ImageField(upload_to='vehiculos/', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Vehiculos"

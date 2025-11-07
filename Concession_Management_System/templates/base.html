@@ -9,7 +9,29 @@
     <title>{% block title %}Car Sales Management System{% endblock %}</title>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'logo_CSMS.png' %}" alt="Logo" class="logo">
+                </a>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'vehiculo_list' %}">Vehículos</a></li>
+                    <li><a href="{% url 'venta_list' %}">Ventas</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 Car Sales Management System</p>
+    </footer>
 </body>
 </html>
