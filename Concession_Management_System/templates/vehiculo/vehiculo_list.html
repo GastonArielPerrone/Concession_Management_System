@@ -1,20 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Listado de Vehículos</h1>
+<div class="container mt-4">
+  <h1 class="mb-4">Listado de Vehículos</h1>
 
-  <form method="get">
-    <label for="marca">Marca:</label>
-    <input type="text" name="marca" id="marca" value="{{ request.GET.marca }}">
-    <label for="modelo">Modelo:</label>
-    <input type="text" name="modelo" id="modelo" value="{{ request.GET.modelo }}">
-    <button type="submit">Filtrar</button>
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+      <label for="marca" class="form-label">Marca:</label>
+      <input type="text" name="marca" id="marca" class="form-control" value="{{ request.GET.marca }}">
+    </div>
+    <div class="col-md-4">
+      <label for="modelo" class="form-label">Modelo:</label>
+      <input type="text" name="modelo" id="modelo" class="form-control" value="{{ request.GET.modelo }}">
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary">Filtrar</button>
+    </div>
   </form>
 
-  <a href="{% url 'vehiculo_create' %}">Agregar Vehículo</a>
+  <a href="{% url 'vehiculo_create' %}" class="btn btn-success mb-4">Agregar Vehículo</a>
 
-  <table>
-    <thead>
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
       <tr>
         <th>Marca</th>
         <th>Modelo</th>
@@ -41,11 +48,12 @@
             {% endif %}
           </td>
           <td>
-            <a href="{% url 'vehiculo_update' vehiculo.pk %}">Editar</a>
-            <a href="{% url 'vehiculo_delete' vehiculo.pk %}">Eliminar</a>
+            <a href="{% url 'vehiculo_update' vehiculo.pk %}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="{% url 'vehiculo_delete' vehiculo.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
           </td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
+</div>
 {% endblock %}

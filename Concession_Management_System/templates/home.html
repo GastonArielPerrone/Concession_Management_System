@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Bienvenido al Sistema de Gestión de Concesionarias</h1>
-    <p>Ha iniciado sesión correctamente. {{user.nombre}}</p>
+<div class="container mt-5">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Bienvenido al Sistema de Gestión de Ventas de Autos</h1>
+            {% if user.is_authenticated %}
+                <p class="col-md-8 fs-4">Ha iniciado sesión correctamente 👍 {{ user.nombre }}.</p>
+                <a href="{% url 'logout' %}" class="btn btn-danger btn-lg">Logout</a>
+            {% else %}
+                <p class="col-md-8 fs-4">Por favor, inicie sesión para continuar.</p>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
