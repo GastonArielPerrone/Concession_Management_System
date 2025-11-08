@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="text-center mb-4">
-    <img src="{% static 'logo_CSMS.png' %}" alt="Logo Car Sales Management System" class="img-fluid" style="max-width: 150px;">
+    <img src="{% static 'logo_CSMS.png' %}" alt="Logo Car Sales Management System" class="img-fluid" style="max-width: 200px;">
 </div>
 <form method="post">
     {% csrf_token %}
@@ -26,4 +26,6 @@
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
     </div>
 </form>
+<p>¿No tenés cuenta?</p>
+<a href="{% url 'registerEmployed' %}">Registrate aquí</a>
 {% endblock %}
